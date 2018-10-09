@@ -7,7 +7,7 @@ assignments.
 ## Instructions
 Sprint|Description|Commit
 ---|---|---|
-[a]()|minimal flask applications|
+[a](https://github.com/KenzieAcademy/epithet-generator/blob/master/instructions/sprint_a.md)|minimal flask applications|
 | |larger applications|
 | |unit testing|
 | |integration testing|
