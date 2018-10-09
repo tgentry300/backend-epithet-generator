@@ -1,5 +1,6 @@
 # Instructions for Sprint A
 
+
 ## Objectives
 - Instantiate and configure an instance of a Flask application
 - Define view functions and routes for GET requests
@@ -12,8 +13,8 @@
 ## Initialize Repository
 1. Clone the master branch of this repository to a convenient location and change directories into the cloned repository.
     ```bash
-    git clone ...
-    cd ...
+    git clone git@github.com:KenzieAcademy/backend-epithet-generator.git
+    cd backend-epithet-generator
     ```
     
 2. Create a sprint-a branch for work in progress and add the recommended Python 
