@@ -1,4 +1,4 @@
-# Instructions for Iteration One
+# Instructions for Sprint A
 
 ## Objectives
 - Instantiate and configure an instance of a Flask application
@@ -16,7 +16,7 @@
     cd ...
     ```
     
-2. Create an iteration-a branch for work in progress and add the recommended Python 
+2. Create a sprint-a branch for work in progress and add the recommended Python 
 [local .gitignore](https://github.com/github/gitignore) starter file from GitHub. git also has 
 [global .gitignore](https://help.github.com/articles/ignoring-files/) settings which are convenient but do 
 not commit ignored files to project repositories. For this assignment, we will use local .gitignore files, but 
@@ -24,7 +24,7 @@ exploring global .gitignore settings is encouraged. An example use-case for glob
 text editor artifacts to your $HOME/.gitignore_global file. Using global ignores in this way keeps unnecessary ignore
 statements out of projects which increases the visible of project specific ignores.
     ```bash
-    git checkout -b iteration-a
+    git checkout -b sprint-a
     curl https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore > .gitignore
     ```
     - curl displays contents of URLs to stdout (the terminal screen) and the > operator redirects stout to the provided filename
@@ -142,7 +142,7 @@ FLASK_ENV=development
 ```
 
 ### In the app.py File
-1. import the instance of app from the sprint_a package. A package in Python is any directory with an \__init__.py 
+1. Import the instance of app from the sprint_a package. A package in Python is any directory with an \__init__.py 
  file. By defining the configure_app and using it to instantiate an instance of Flask in the \__init__.py file, we can 
  import app directory from the project's root package i.e. sprint_a.
 
