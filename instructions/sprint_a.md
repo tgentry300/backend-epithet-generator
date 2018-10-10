@@ -22,10 +22,24 @@
     git checkout -b sprint-a
     curl https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore > .gitignore
     ```
-    - curl displays contents of URLs to stdout (the terminal) and the > operator redirects stout to a profiled file.
-    - Review contents of the recommended .gitignore file to see commonly ignored Python artifacts.
-    - Do not commit virtualenvs to version control. It is unnecessary and has considerable storage costs. 
-    Instead, use pipenv to centrally manage environments outside of project repositories.
+    curl displays contents of URLs to stdout, a.k.a the terminal, and the > operator redirects stdout to the specified 
+    file. If the file does not exist, the redirect operator creates the file. If the provided file does exist, it 
+    will be overwritten with the contents of the URL. For additional examples of curl, 
+    [this tutorial](https://gist.github.com/caspyin/2288960) explores the GitHub API using curl.
+    
+    - Review the contents of the recommended .gitignore file to see commonly ignored Python artifacts.
+    - Notice GitHub recommends not committing virtualenvs to version control. It is unnecessary and has considerable 
+    storage costs. Instead, use pipenv to centrally manage environments outside of project repositories.
+    
+    If curl is not installed, it can be installed with most package managers.
+    
+    ```bash
+    #MacOS
+    brew install curl
+    
+    #Windows
+    choco install curl
+    ```
     
 3. Delete all sections of the downloaded .gitignore file except sections listed below. Unless a statement in the 
 downloaded .gitignore collides with a name of a project resource, it is not necessary to remove any of the entries, 
