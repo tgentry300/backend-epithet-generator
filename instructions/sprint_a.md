@@ -5,7 +5,7 @@
 - Demonstrate a minimal Flask project structure.
 - Configure and instantiate an instance of a Flask application using the factory method design pattern.
 - Define view functions and routes for GET requests.
-- Serve JSON encoded responses
+- Serve JSON encoded responses.
 
 
 
@@ -63,8 +63,6 @@ project.
  To demonstrate effective environment management with pipenv, we will create a virtualenv for each sprint of this 
  assignment by creating Pipfile and Pipfile.lock files from the directories of each sprint. These directories should
  be created in the ./submissions folder of the cloned repository.
- 
- 1. Create a directory for sprint_a and create an isolated development environment.
  ```bash
  mkdir ./submissions/sprint_a
  cd .submissions/sprint_a
@@ -112,8 +110,7 @@ It is common to see instances of Flask applications instantiated simply as "app 
  instances of the Flask application, databases, etc.... These resources are used throughout an application's codebase, 
  so it is beneficial to have their configuration and instantiated instances in one location to be imported elsewhere in 
  the project when needed. We'll follow Flask's recommendation and use a factory defined in the project's \__init__.py 
- file to configure and initialize an instance of the Flask class used in the app.py, helpers.py, and test_helpers.py 
- files.
+ file to configure and initialize an instance of the Flask class used throughout the project.
 
 ### In the \__init__.py File
 1. Define a function named configure_app
@@ -138,9 +135,9 @@ FLASK_ENV=development
 ```
 
 ### In the app.py File
-1. Import the instance of app from the sprint_a package. A package in Python is any directory with an \__init__.py 
+Import the instance of app from the sprint_a package. A package in Python is any directory with an \__init__.py 
  file. By defining the configure_app and using it to instantiate an instance of Flask in the \__init__.py file, we can 
- import app directly from the project root directory.
+ import app directly from the project's root directory.
 
 
 ## Defining Routes
@@ -148,7 +145,7 @@ FLASK_ENV=development
     - bind a view function called generate_epithets to '/'. This route will serve a randomly generated epithet.
     - bind a view function called vocabulary to '/vocabulary'. This route will serve the vocabulary used to generate 
     epithets.
-3. Have these functions return a JSON representation of {"epithets": []} and {"vocabulary": []} respectively.
+3. Have these functions return a JSON representation of {"epithets": []} and {"vocabulary": {}} respectively.
 
 
 ## Starting Flask's Development Server
