@@ -124,15 +124,17 @@ It is common to see instances of Flask applications instantiated simply as "app 
 6. Use the configure_app function to assign an instance of the Flask application to a variable labeled app.
 
 ### In the .env File
-Add to following to the .env file. The FLASK_APP environment variable tells Flask which file & variable to use when 
-loading applications, and the FLASK_ENV environment variable is used to tell Flask which environment configuration to 
-use. Flask defaults to production if FLASK_ENV is not defined, which disables flask debugging, so setting FLASK_ENV to 
-development prevents configuring the Flask debug parameter. If FLASK_ENV is set to development, debugging is 
-automatically enabled.
+Add to following to the .env file. 
 ```bash
 FLASK_APP=app
 FLASK_ENV=development
 ```
+- The FLASK_APP environment variable tells Flask which file & variable to use when loading applications. If FLASK_APP is 
+not defined, Flask will default to app but we'll define it here to be explicit.
+- The FLASK_ENV environment variable tells Flask which environment settings to use. If FLASK_ENV is not set, Flask will 
+default to production environment settings which disables Flask's debug mode for security purposes. Setting FLASK_ENV to 
+development enables debugging.
+
 
 ### In the app.py File
 Import the instance of app from the sprint_a package. A package in Python is any directory with an \__init__.py 
