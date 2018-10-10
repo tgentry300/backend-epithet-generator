@@ -17,12 +17,7 @@
     ```
     
 2. Create a sprint-a branch for work in progress and add the recommended Python 
-[local .gitignore](https://github.com/github/gitignore) starter file from GitHub. git also has 
-[global .gitignore](https://help.github.com/articles/ignoring-files/) settings which are convenient but do 
-not commit ignored files to project repositories. For this assignment, we will use local .gitignore files, but 
-exploring global .gitignore settings is encouraged. An example use-case for global .gitignores is to add your IDE or
-text editor artifacts to your $HOME/.gitignore_global file. Using global ignores in this way keeps unnecessary ignore
-statements out of projects which increases the visible of project specific ignores.
+[local .gitignore](https://github.com/github/gitignore) starter file from GitHub.
     ```bash
     git checkout -b sprint-a
     curl https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore > .gitignore
@@ -36,8 +31,9 @@ statements out of projects which increases the visible of project specific ignor
 downloaded .gitignore collides with a name of a project resource, it is not necessary to remove any of the entries, 
 but we will for the sake of being explicit. It is probable that files from each of these sections could end up in a 
 Flask project. The others are less probable and can be ignored later if introduced. Alternatively, 
-you can add the removed sections to your $HOME/.gitignore_global file to still protect the assignment repo and all 
-other repos on your computer. 
+you can add the removed sections to your [$HOME/.gitignore_global](https://help.github.com/articles/ignoring-files/)
+file to protect all git repositories on your computer from these files without adding the ignore statements to each
+project.
     - Byte-compiled / optimized / DLL files
     - C extensions
     - Installer logs
