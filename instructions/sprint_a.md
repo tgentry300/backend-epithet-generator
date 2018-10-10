@@ -1,12 +1,11 @@
 # Instructions for Sprint A
 
-
 ## Objectives
-- Instantiate and configure an instance of a Flask application
-- Define view functions and routes for GET requests
+- Demonstrate version control best-practices for starting Flask projects.
+- Demonstrate a minimal Flask project structure.
+- Configure and instantiate an instance of a Flask application using the factory method design pattern.
+- Define view functions and routes for GET requests.
 - Serve JSON encoded responses
-- Demonstrate a minimal project structure
-- Demonstrate decoupled approach for defining application logic
 
 
 
@@ -28,11 +27,10 @@ statements out of projects which increases the visible of project specific ignor
     git checkout -b sprint-a
     curl https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore > .gitignore
     ```
-    - curl displays contents of URLs to stdout (the terminal screen) and the > operator redirects stout to the provided filename
-    - review contents of the recommended .gitignore file to see commonly ignored Python artifacts
-    - do not commit virtualenvs to version control. It is unnecessary 
-    and has considerable storage costs. Instead of adding this overhead to Python projects, use pipenv or similar tools 
-    to centrally manage isolated environments.
+    - curl displays contents of URLs to stdout (the terminal) and the > operator redirects stout to a profiled file.
+    - Review contents of the recommended .gitignore file to see commonly ignored Python artifacts.
+    - Do not commit virtualenvs to version control. It is unnecessary and has considerable storage costs. 
+    Instead, use pipenv to centrally manage environments outside of project repositories.
     
 3. Delete all sections of the downloaded .gitignore file except sections listed below. Unless a statement in the 
 downloaded .gitignore collides with a name of a project resource, it is not necessary to remove any of the entries, 
@@ -48,7 +46,7 @@ other repos on your computer.
     - pyenv
     - Environments
     
-4. Stage the .gitignore file and create an initial commit of the development branch.
+4. Stage the .gitignore file and create an initial commit of the sprint-a branch.
     
     
  ## Configuring Development Environments
@@ -56,7 +54,7 @@ other repos on your computer.
  assignment by creating Pipfile and Pipfile.lock files from the directories of each sprint. These directories should
  be created in the ./submissions folder of the cloned repository.
  
- 1. Create a directory for sprint_a and create an isolated environment 
+ 1. Create a directory for sprint_a and create an isolated development environment.
  ```bash
  mkdir ./submissions/sprint_a
  cd .submissions/sprint_a
@@ -74,10 +72,10 @@ to add our version requirements to Pipfile should Pipfile.lock need regenerating
 pip show <package-name>
 ```
 1. Use pip to discover the versions of packages that were installed with pipenv in the previous step.
-    - these are the project's requirements a.k.a dependencies
-    - all other installed packages are transitive dependencies required by project dependencies
+    - These are the project's requirements a.k.a dependencies
+    - All other installed packages are transitive dependencies required by project dependencies
 2. Use the version matching [clause](https://www.python.org/dev/peps/pep-0440/#version-specifiers) to pin the exact version
-of these packages in Pipenv
+of these packages in Pipenv.
 
 ## Structuring Projects
 There are many ways to structure Flask applications, but not all project structures are equal. We will start the Epithet
@@ -101,7 +99,7 @@ touch .env
 
 |File|Description
 |---|---|
-\_\_init__.py| Organize Flask configuration and app instances.
+\__init__.py| Organize Flask configuration and app instances.
 app.py| Organize defined routes. You may see this file called app.py or <project-name>.py in other projects. Flask defaults to loading app.py, so we will default to using app.py here, but the name is arbitrary and can be configured with the FLASK_APP environment variable.
 helpers.py| Organize application logic keeping it decoupled from routes defined in app.py. By decoupling application and routing, application logic can be easily reused in other areas of an application or in other projects.
 test_helpers.py| Organize unit and integration tests for the Flask application. In larger applications, helpers in helpers.py would be distributed across multiple packages, each with a test_<package-name>.py file of tests.
@@ -109,16 +107,16 @@ test_helpers.py| Organize unit and integration tests for the Flask application. 
 
 
 ## Instantiating Flask
-It is common to see instances of Flask applications instantiated simply as "app = Flask(\__name__)"; however, Flask
- recommends the [factory method](http://flask.pocoo.org/docs/1.0/patterns/appfactories/) design pattern instead. 
- The benefit of factories, in Flask and elsewhere, is that object creation logic is consolidated in one location making 
- the code easier to understand and maintain. Factories can also be used to consolidate creation of different classes of 
+It is common to see instances of Flask applications instantiated simply as "app = Flask(\__name__)". However, Flask
+ recommends using the [factory method](http://flask.pocoo.org/docs/1.0/patterns/appfactories/) design pattern.
+ The benefit of using this pattern is that object creation logic is consolidated in one location making 
+ the code easier to understand and maintain. Factories can also be used to simplify creation of different classes of 
  objects when it is not known in advance which objects are needed. In the case of Flask, this could mean instantiating 
  instances of the Flask application, databases, etc.... These resources are used throughout an application's codebase, 
- so it is beneficial to have their configuration and  intialized instances in one location to be imported elsewhere in 
+ so it is beneficial to have their configuration and instantiated instances in one location to be imported elsewhere in 
  the project when needed. We'll follow Flask's recommendation and use a factory defined in the project's \__init__.py 
- file to configure and initialize an instance of the Flask class to be used in the app.py, helpers.py, 
- and test_helpers.py files.
+ file to configure and initialize an instance of the Flask class used in the app.py, helpers.py, and test_helpers.py 
+ files.
 
 ### In the \__init__.py File
 1. Define a function named configure_app
@@ -129,12 +127,12 @@ It is common to see instances of Flask applications instantiated simply as "app 
     [os.path.join()](https://pymotw.com/3/os.path/index.html#building-paths), and the PROJECT_ROOT variable to load 
     environment variables automatically from the .env file. 
 5. Instantiate and return an instance of Flask from the configure_app function.
-6. Use the configure_app function to assign an instance of the Flask application to a variable identifier labeled app.
+6. Use the configure_app function to assign an instance of the Flask application to a variable labeled app.
 
 ### In the .env File
-Add to following to the .env file. The FLASK_APP environment variable tells flask which file to use to 
-load applications, and the FLASK_ENV environment variable is used to tell flask which environment configuration to use.
-Flask defaults to production if FLASK_ENV is not defined, which disables flask debugging, so setting FLASK_ENV to 
+Add to following to the .env file. The FLASK_APP environment variable tells Flask which file & variable to use when 
+loading applications, and the FLASK_ENV environment variable is used to tell Flask which environment configuration to 
+use. Flask defaults to production if FLASK_ENV is not defined, which disables flask debugging, so setting FLASK_ENV to 
 development prevents configuring the Flask debug parameter. If FLASK_ENV is set to development, debugging is 
 automatically enabled.
 ```bash
@@ -145,14 +143,14 @@ FLASK_ENV=development
 ### In the app.py File
 1. Import the instance of app from the sprint_a package. A package in Python is any directory with an \__init__.py 
  file. By defining the configure_app and using it to instantiate an instance of Flask in the \__init__.py file, we can 
- import app directory from the project's root package i.e. sprint_a.
+ import app directly from the project root directory.
 
 
 ## Defining Routes
-1. Open app.py and import the configure_app function defined previously to instantiate an instance of Flask
-2. Using the app.route decorator:
-    - bind a view function called generate_epithets to '/' to serve a randomly generated epithet.
-    - bind a view function called vocabulary to '/vocabulary' to serve all vocabulary words.
+1. In app.py, use the app.route decorator to:
+    - bind a view function called generate_epithets to '/'. This route will serve a randomly generated epithet.
+    - bind a view function called vocabulary to '/vocabulary'. This route will serve the vocabulary used to generate 
+    epithets.
 3. Have these functions return a JSON representation of {"epithets": []} and {"vocabulary": []} respectively.
 
 
@@ -168,57 +166,3 @@ previous section.
 ```bash
 flask run
 ```
-
-
-## Rubric
-
-
-| |Professional|Acceptable|Unprofessional
----|---|---|---
-|Initialize Repository|listed|listed|listed
-|Configuring Development Environments|listed|listed|listed
-|Structuring Projects|listed|listed|listed
-|Instantiating Flask|listed|listed|listed
-|Defining Routes|listed|listed|listed
-|Starting Flask's Development Server|listed|listed|listed
-
-1. Initialize Repository
-    1. Professional
-        1. repository contains:
-            - .gitignore file containing the requested sections of Github's default Python .gitignore file
-            - a README.md file describing the project
-        2. repository does not contain:
-            - virtualenv and other artifacts such as IDE/editor configuration, .pyc files, pytest's cache directory, etc...
-        3. commit message of the initial commit briefly describes the intent of the project
-        4. all work was completed on the sprint-a branch of the repository
-    2. Acceptable
-        1. repository contains:
-            - .gitignore file containing Github's entire default Python .gitignore file
-    3. Unprofessional
-        1. repository contains:
-            - virtualenv and other artifacts such as IDE/editor configuration, .pyc files, pytest's cache directory, etc...
-        2. repository does not contain:
-            - a README.md file describing the project
-        3. commit messages lack sufficient information to understand why changes were made. Version control tracks what
-            changed, developers are responsible for describing why changes are made
-            
-2. Configuring Development Environments
-    1. Professional
-        1. Pipfile specifies i.e. pins the:
-            - versions of each installed package using the version matching clause
-        2. Pipfile.lock
-            - the file exists
-        3. Both Pipfile and Pipfile.lock are committed
-    2. Acceptable
-        1. Pipfile specifies i.e. pins the:
-            - versions of each installed package using the compatible version clause
-        2. Pipfile, but not Pipfile.lock, was committed and a version specifier was used
-    3. Unprofessional
-        1. Pipfile specifies i.e. pins the:
-            - versions of each installed package using asterisks
-        2. Pipfile, but not Pipfile.lock, was committed and a version specifier was not used
-    
-3. Structurting Projects
-4. Instantiating Flask
-5. Defining Routes
-6. Starting Flask's Development Server
