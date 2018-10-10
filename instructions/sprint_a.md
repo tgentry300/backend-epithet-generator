@@ -63,19 +63,6 @@ other repos on your computer.
  pipenv install pytest --dev
  pipenv --venv
 ```
-By not specifying a version of flask, python-dotenv, or pytest; the latest version of each package was installed. This 
-is indicated in Pipfile with asterisks for package versions instead of a [version specifier](https://www.python.org/dev/peps/pep-0440/#version-specifiers).  
-Now that packages are installed, we can use pip to discover which versions of these packages were installed and 
-pin the dependencies in our Pipfile accordingly. pipenv pins package versions in Pipfile.lock, but it is a good practice 
-to add our version requirements to Pipfile should Pipfile.lock need regenerating.
-```bash
-pip show <package-name>
-```
-1. Use pip to discover the versions of packages that were installed with pipenv in the previous step.
-    - These are the project's requirements a.k.a dependencies
-    - All other installed packages are transitive dependencies required by project dependencies
-2. Use the version matching [clause](https://www.python.org/dev/peps/pep-0440/#version-specifiers) to pin the exact version
-of these packages in Pipenv.
 
 ## Structuring Projects
 There are many ways to structure Flask applications, but not all project structures are equal. We will start the Epithet
