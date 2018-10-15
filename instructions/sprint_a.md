@@ -65,7 +65,7 @@ project.
  be created in the ./submissions folder of the cloned repository.
  ```bash
  mkdir ./submissions/sprint_a
- cd .submissions/sprint_a
+ cd submissions/sprint_a
  pipenv install flask
  pipenv install python-dotenv
  pipenv install pytest --dev
@@ -85,7 +85,7 @@ best-practices when needed.
 ```bash
 pwd
 ./submissions/sprint_a
-touch __init__py
+touch __init__.py
 touch app.py
 touch helpers.py
 touch test_helpers.py
@@ -94,8 +94,8 @@ touch .env
 
 |File|Description
 |---|---|
-\__init__.py| Organize Flask configuration and app instances.
-app.py| Organize defined routes. You may see this file called app.py or <project-name>.py in other projects. Flask defaults to loading app.py, so we will default to using app.py here, but the name is arbitrary and can be configured with the FLASK_APP environment variable.
+\_\_init\_\_.py| Organize Flask configuration and app instances.
+app.py| Organize defined routes. You may see this file called app.py or \<project-name\>.py in other projects. Flask defaults to loading app.py, so we will default to using app.py here, but the name is arbitrary and can be configured with the FLASK_APP environment variable.
 helpers.py| Organize application logic keeping it decoupled from routes defined in app.py. By decoupling application and routing, application logic can be easily reused in other areas of an application or in other projects.
 test_helpers.py| Organize unit and integration tests for the Flask application. In larger applications, helpers in helpers.py would be distributed across multiple packages, each with a test_<package-name>.py file of tests.
 .env| Store application configuration management as environment variables. This file is not considered in the four files of a Flask application as .env files are used across programming languages and frameworks.
