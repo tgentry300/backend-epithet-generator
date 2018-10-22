@@ -1,7 +1,6 @@
 # Instructions for Sprint C
 
 ## Objectives
-- Understand the difference between unit and integration testing.
 - Understand how to do integration testing  in the context of Flask applications.
 
 ## Introduction
@@ -25,16 +24,16 @@ in this series is functional, we need to know if all steps of the series work
 together to serve epithets.
 
 In this assignment we will continue where sprint B concluded by:
-1. creating integration tests to verify each route serves its expected payload.
+1. adding a route to serve a random number of epithets.
+2. creating integration tests to verify each route serves its expected payload.
 
 
 
 
 ## Instructions
 1. Watch [Web API Development with Flask: Using the Flask Test Client](https://www.youtube.com/watch?v=APbPtQg3_04)
-2. Read [Flask's testing documentation](http://flask.pocoo.org/docs/latest/testing/) to appreciate 
-3. Read [Flask-Testing's documentation](https://pythonhosted.org/Flask-Testing/)
-4. Add one route that serves a random number of epithets.
+2. Read [Flask-Testing's documentation](https://pythonhosted.org/Flask-Testing/).
+3. Add one route that serves a random number of epithets.
 4. Create integration tests using the Flask-Testing extension to verify each 
 route serves its expected payload.
 
