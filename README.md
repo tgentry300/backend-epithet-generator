@@ -9,6 +9,4 @@ Sprint|Description|Commit
 ---|---|---|
 [a](https://github.com/KenzieAcademy/backend-epithet-generator/blob/master/instructions/sprint_a.md)|minimal flask applications|
 [b](https://github.com/KenzieAcademy/backend-epithet-generator/blob/sprint-b/instructions/sprint_b.md) |unit testing|
-| |integration testing|
-| |design patterns|
-| |larger applications|
+[c](https://github.com/KenzieAcademy/backend-epithet-generator/blob/sprint-c/instructions/sprint_c.md) |integration testing|
