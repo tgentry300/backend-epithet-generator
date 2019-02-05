@@ -103,7 +103,7 @@ test_helpers.py| Organize unit and integration tests for the Flask application. 
 
 
 ## Instantiating Flask
-It is common to see instances of Flask applications instantiated simply as "app = Flask(\__name__)". However, Flask
+It is common to see instances of Flask applications instantiated simply as "app = Flask(\_\_name__)". However, Flask
  recommends using the [factory method](http://flask.pocoo.org/docs/1.0/patterns/appfactories/) design pattern.
  The benefit of using this pattern is that object creation logic is consolidated in one location making
  the code easier to understand and maintain. Factories can also be used to simplify creation of different classes of
