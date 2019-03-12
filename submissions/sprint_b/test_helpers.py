@@ -1,4 +1,4 @@
-from .helpers import Vocabulary, EpithetGenerator, FileManager
+from helpers import Vocabulary, EpithetGenerator, FileManager
 
 json_path = '../../resources/data.json'
 

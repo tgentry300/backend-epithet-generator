@@ -57,7 +57,7 @@ class EpithetGenerator:
         col_2_random = random.choice(vocab_dict[0]['Column 2'])
         col_3_random = random.choice(vocab_dict[0]['Column 3'])
 
-        epithet = f"Thou {col_1_random} {col_2_random} {col_3_random}"
+        epithet = f'Thou {col_1_random} {col_2_random} {col_3_random}'
         return epithet
 
     def gen_multiple_epithets(self, path, num):
