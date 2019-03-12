@@ -1,6 +1,6 @@
-from __init__ import app
-from helpers import EpithetGenerator
-from helpers import Vocabulary
+from sprint_b import app
+from .helpers import EpithetGenerator
+from .helpers import Vocabulary
 from flask import jsonify
 
 gen = EpithetGenerator()
@@ -22,7 +22,7 @@ def vocabulary():
 @app.route('/epithets/<quantity>')
 def quantity(quantity):
     num_of_epithets = []
-    for _ in range(quantity):
+    for _ in range(int(quantity)):
         num_of_epithets.append(gen.select_random('../../resources/data.json'))
     return jsonify({"epithets": num_of_epithets})
 

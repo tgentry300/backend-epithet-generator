@@ -1,6 +1,5 @@
-import unittest
 from flask_testing import TestCase
-from app import app
+from .app import app
 
 
 class TestFlaskResponses(TestCase):
@@ -15,11 +14,10 @@ class TestFlaskResponses(TestCase):
 
     def test_vocab(self):
         response = self.client.get('/vocabulary')
+        self.assertTrue(len(response.json['vocabulary']) == 3)
         self.assertEqual(response.status_code, 200)
 
-    # def test_mult_epithets(self):
-    #     response = self.client.get
-
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_mult_epithets(self):
+        response = self.client.get('/epithets/5')
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.json['epithets']) == 5)
